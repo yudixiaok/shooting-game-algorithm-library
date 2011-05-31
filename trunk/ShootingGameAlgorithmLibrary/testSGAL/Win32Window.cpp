@@ -23,7 +23,6 @@
  */
 
 #include "Win32Window.h"
-#include "resource.h"
 
 Win32Window::Win32Window(void):m_style(WS_POPUPWINDOW|WS_CAPTION),m_EX_style(WS_EX_OVERLAPPEDWINDOW)
 {

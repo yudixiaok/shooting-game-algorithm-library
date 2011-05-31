@@ -1,5 +1,5 @@
 #pragma once
-#include "OgreVector3.h"
+#include "../math/OgreVector3.h"
 #include "behavior.h"
 #include <vector>
 #include <list>

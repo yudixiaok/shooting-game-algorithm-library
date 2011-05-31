@@ -30,7 +30,8 @@ THE SOFTWARE.
 #include "OgreMath.h"
 
 // Adapted from Matrix math by Wild Magic http://www.geometrictools.com/
-
+#  pragma warning (push)
+#  pragma warning (disable : 4305)
 namespace Ogre
 {
     const float Matrix3::EPSILON = 1e-06;
@@ -1508,3 +1509,4 @@ namespace Ogre
     }
     //-----------------------------------------------------------------------
 }
+#  pragma warning (pop)

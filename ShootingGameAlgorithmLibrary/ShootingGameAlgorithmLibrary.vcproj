@@ -41,7 +41,7 @@
 			<Tool
 				Name="VCCLCompilerTool"
 				Optimization="0"
-				AdditionalIncludeDirectories="include/algo;include/common;include/ball"
+				AdditionalIncludeDirectories="include/algo;include/common;include/ball;include/math"
 				PreprocessorDefinitions="WIN32;_DEBUG;_CONSOLE"
 				MinimalRebuild="true"
 				BasicRuntimeChecks="3"
@@ -106,7 +106,7 @@
 				Name="VCCLCompilerTool"
 				Optimization="2"
 				EnableIntrinsicFunctions="true"
-				AdditionalIncludeDirectories="include/algo;include/common;include/ball"
+				AdditionalIncludeDirectories="include/algo;include/common;include/ball;include/math"
 				PreprocessorDefinitions="WIN32;NDEBUG;_CONSOLE"
 				RuntimeLibrary="0"
 				EnableFunctionLevelLinking="true"
@@ -176,6 +176,46 @@
 				Name="common"
 				>
 			</Filter>
+			<Filter
+				Name="math"
+				>
+				<File
+					RelativePath=".\src\math\OgreAxisAlignedBox.cpp"
+					>
+				</File>
+				<File
+					RelativePath=".\src\math\OgreMath.cpp"
+					>
+				</File>
+				<File
+					RelativePath=".\src\math\OgreMatrix3.cpp"
+					>
+				</File>
+				<File
+					RelativePath=".\src\math\OgreMatrix4.cpp"
+					>
+				</File>
+				<File
+					RelativePath=".\src\math\OgrePlane.cpp"
+					>
+				</File>
+				<File
+					RelativePath=".\src\math\OgreQuaternion.cpp"
+					>
+				</File>
+				<File
+					RelativePath=".\src\math\OgreVector2.cpp"
+					>
+				</File>
+				<File
+					RelativePath=".\src\math\OgreVector3.cpp"
+					>
+				</File>
+				<File
+					RelativePath=".\src\math\OgreVector4.cpp"
+					>
+				</File>
+			</Filter>
 		</Filter>
 		<Filter
 			Name="inc"
@@ -223,6 +263,62 @@
 				</File>
 				<File
 					RelativePath=".\include\common\shared_ptr.h"
+					>
+				</File>
+			</Filter>
+			<Filter
+				Name="math"
+				>
+				<File
+					RelativePath=".\include\math\asm_math.h"
+					>
+				</File>
+				<File
+					RelativePath=".\include\math\OgreAxisAlignedBox.h"
+					>
+				</File>
+				<File
+					RelativePath=".\include\math\OgreMath.h"
+					>
+				</File>
+				<File
+					RelativePath=".\include\math\OgreMatrix3.h"
+					>
+				</File>
+				<File
+					RelativePath=".\include\math\OgreMatrix4.h"
+					>
+				</File>
+				<File
+					RelativePath=".\include\math\OgrePlane.h"
+					>
+				</File>
+				<File
+					RelativePath=".\include\math\OgrePlaneBoundedVolume.h"
+					>
+				</File>
+				<File
+					RelativePath=".\include\math\OgreQuaternion.h"
+					>
+				</File>
+				<File
+					RelativePath=".\include\math\OgreRay.h"
+					>
+				</File>
+				<File
+					RelativePath=".\include\math\OgreSphere.h"
+					>
+				</File>
+				<File
+					RelativePath=".\include\math\OgreVector2.h"
+					>
+				</File>
+				<File
+					RelativePath=".\include\math\OgreVector3.h"
+					>
+				</File>
+				<File
+					RelativePath=".\include\math\OgreVector4.h"
 					>
 				</File>
 			</Filter>

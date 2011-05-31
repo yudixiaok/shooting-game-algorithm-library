@@ -36,7 +36,8 @@ THE SOFTWARE.
 #include "OgreMath.h"
 #include "OgreMatrix3.h"
 #include "OgreVector3.h"
-
+#  pragma warning (push)
+#  pragma warning (disable : 4305)
 namespace Ogre {
 
     const float Quaternion::ms_fEpsilon = 1e-03;
@@ -604,3 +605,4 @@ namespace Ogre {
         return result;
     }
 }
+#  pragma warning (pop)

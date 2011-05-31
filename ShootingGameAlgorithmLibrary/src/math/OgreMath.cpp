@@ -33,7 +33,8 @@ THE SOFTWARE.
 #include "OgrePlane.h"
 #include "OgreRay.h"
 #include "OgreAxisAlignedBox.h"
-
+#  pragma warning (push)
+#  pragma warning (disable : 4305)
 namespace Ogre
 {
 
@@ -983,3 +984,4 @@ namespace Ogre
 	}
 
 }
+#  pragma warning (pop)

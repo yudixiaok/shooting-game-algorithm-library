@@ -14,23 +14,15 @@ public:
 		STOP,
 		DESTORY
 	};
-	Ball():mTimeRate(1)
+	inline Ball():mTimeRate(1)
 	{
 	}
-	Ball(const Ogre::Vector3 pos, const Ogre::Vector3 dir, Behavior_Sptr Behavior = Behavior_Sptr())
+	inline Ball(const Ogre::Vector3 pos, const Ogre::Vector3 dir, Behavior_Sptr Behavior = Behavior_Sptr())
 		:mTimeRate(1), mPosition(pos), mDirection(dir), mUp(Ogre::Vector3::UNIT_Z), mpBehavior(Behavior)
 	{
 	}
-	int Update(float elapsedtime)
-	{
-		if (mpBehavior.get())
-			return mpBehavior->UpdateBall(this, elapsedtime);
-		return STOP;
-	}
-	bool HasBehavior()
-	{
-		return mpBehavior.get()!=0;
-	}
+	int Update(float elapsedtime);
+	bool HasBehavior();
 	Ogre::Vector3	mPosition;
 	Ogre::Vector3	mDirection;
 	Ogre::Vector3	mUp;

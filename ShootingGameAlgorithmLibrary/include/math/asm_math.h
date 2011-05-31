@@ -1,10 +1,10 @@
 #ifndef __asm_math_H__
 #define __asm_math_H__
 
-
 #  pragma warning (push)
 // disable "instruction may be inaccurate on some Pentiums"
 #  pragma warning (disable : 4725)
+#  pragma warning (disable : 4305)
 
 namespace Ogre
 {
@@ -296,8 +296,7 @@ __inline float asm_rand()
 __inline float asm_rand_max()
 {
 #if  _M_IX86
-	return (std::numeric_limits< unsigned __int64 >::max)();
-	return 9223372036854775807.0f;
+	return (std::numeric_limits< float >::max)();
 #else
 	return float( RAND_MAX );
 #endif

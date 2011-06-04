@@ -41,8 +41,8 @@
 			<Tool
 				Name="VCCLCompilerTool"
 				Optimization="0"
-				AdditionalIncludeDirectories="include/algo;include/common;include/ball;include/math"
-				PreprocessorDefinitions="WIN32;_DEBUG;_CONSOLE"
+				AdditionalIncludeDirectories="include;include/algo;include/common;include/ball;include/math"
+				PreprocessorDefinitions="WIN32;_DEBUG;_CONSOLE;_CRT_SECURE_NO_WARNINGS"
 				MinimalRebuild="true"
 				BasicRuntimeChecks="3"
 				RuntimeLibrary="1"
@@ -61,6 +61,7 @@
 			/>
 			<Tool
 				Name="VCLibrarianTool"
+				AdditionalDependencies="gc_mtd.lib"
 				OutputFile="SGALd.lib"
 			/>
 			<Tool
@@ -107,7 +108,7 @@
 				Optimization="2"
 				EnableIntrinsicFunctions="true"
 				AdditionalIncludeDirectories="include/algo;include/common;include/ball;include/math"
-				PreprocessorDefinitions="WIN32;NDEBUG;_CONSOLE"
+				PreprocessorDefinitions="WIN32;NDEBUG;_CONSOLE;_CRT_SECURE_NO_WARNINGS"
 				RuntimeLibrary="0"
 				EnableFunctionLevelLinking="true"
 				UsePrecompiledHeader="0"
@@ -125,6 +126,7 @@
 			/>
 			<Tool
 				Name="VCLibrarianTool"
+				AdditionalDependencies="gc_mt.lib"
 				OutputFile="SGAL.lib"
 			/>
 			<Tool
@@ -160,7 +162,7 @@
 					>
 				</File>
 				<File
-					RelativePath=".\include\algo\BehaviorAnimato.cpp"
+					RelativePath=".\src\ball\BehaviorAnimator.cpp"
 					>
 				</File>
 				<File
@@ -171,6 +173,10 @@
 			<Filter
 				Name="algo"
 				>
+				<File
+					RelativePath=".\src\algo\BallManager.cpp"
+					>
+				</File>
 			</Filter>
 			<Filter
 				Name="common"
@@ -234,7 +240,7 @@
 					>
 				</File>
 				<File
-					RelativePath=".\include\algo\BehaviorAnimator.h"
+					RelativePath=".\include\ball\BehaviorAnimator.h"
 					>
 				</File>
 				<File
@@ -245,6 +251,10 @@
 			<Filter
 				Name="algo"
 				>
+				<File
+					RelativePath=".\include\algo\BallManager.h"
+					>
+				</File>
 				<File
 					RelativePath=".\include\algo\nway.h"
 					>
@@ -258,11 +268,15 @@
 				Name="common"
 				>
 				<File
-					RelativePath=".\include\common\SGAmath.h"
+					RelativePath=".\include\common\SGA_config.h"
 					>
 				</File>
 				<File
 					RelativePath=".\include\common\shared_ptr.h"
+					>
+				</File>
+				<File
+					RelativePath=".\include\common\utility.h"
 					>
 				</File>
 			</Filter>

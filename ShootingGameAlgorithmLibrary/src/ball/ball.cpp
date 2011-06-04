@@ -2,13 +2,13 @@
 
 int Ball::Update( float elapsedtime )
 {
-	if (mpBehavior.get())
+	if (mpBehavior)
 		return mpBehavior->UpdateBall(this, elapsedtime);
 	return STOP;
 }
 
 bool Ball::HasBehavior()
 {
-	return mpBehavior.get()!=0;
+	return mpBehavior!=NULL;
 }
 

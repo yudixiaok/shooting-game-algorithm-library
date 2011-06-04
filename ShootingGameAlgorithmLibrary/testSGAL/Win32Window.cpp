@@ -181,8 +181,7 @@ MSG Win32Window::HandlePeekMessage()
 	MSG msg;
 	// 主訊息迴圈:
 	if ( PeekMessage(&msg, m_hWnd, 0, 0, PM_REMOVE) )
-	{
-		
+	{	
 		TranslateMessage(&msg);
 		DispatchMessage(&msg);
 	}///< 有訊息的話, 就把它送給訊息處理函式

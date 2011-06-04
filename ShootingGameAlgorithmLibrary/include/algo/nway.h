@@ -5,15 +5,9 @@
 class Nway : public Trajectory
 {
 public:
-	enum PathRule
-	{
-		RANDOM,
-		REGULAR
-	};
-	PathRule	mPathRule;
 	float		mRadiationAngle;
 	Nway(int _mNumTrajectory, Ogre::Vector3 _mPosition, Ogre::Vector3 _mDirection)
-		:Trajectory(_mNumTrajectory, _mPosition, _mDirection), mPathRule(REGULAR)
+		:Trajectory(_mNumTrajectory, _mPosition, _mDirection)
 	{}
 	virtual ~Nway()
 	{}
@@ -40,6 +34,10 @@ public:
 	{
 		return BallList(mBall_PreComptue.begin(), mBall_PreComptue.end());
 	}
+	virtual BallVector& GetBallVector()
+	{
+		return mBall_PreComptue;
+	}
 	virtual BallVector GenerateBallVector()
 	{
 		return mBall_PreComptue;
@@ -48,6 +46,7 @@ protected:
 	virtual void Modifyed()
 	{
 		mBall_PreComptue.clear();
+		mBall_PreComptue.reserve(mNumTrajectory);
 		float step_angle;
 		float start = -mRadiationAngle*0.5f;
 		if (mNumTrajectory > 1)

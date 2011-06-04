@@ -105,6 +105,7 @@ namespace Ogre
 		bool operator >= ( const Radian& r ) const { return mRad >= r.mRad; }
 		bool operator >  ( const Radian& r ) const { return mRad >  r.mRad; }
 
+
 		inline friend std::ostream& operator <<
 			( std::ostream& o, const Radian& v )
 		{

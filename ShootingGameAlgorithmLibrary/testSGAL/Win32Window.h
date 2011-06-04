@@ -71,7 +71,7 @@ public:
 		switch (message)
 		{
 		case WM_DESTROY:
-			PostQuitMessage(0);
+			PostQuitMessage(WM_QUIT);
 			break;
 		default:
 			return DefWindowProc(hWnd, message, wParam, lParam);

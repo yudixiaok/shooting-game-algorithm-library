@@ -2,6 +2,7 @@
 #include "../math/OgreVector3.h"
 #include "../ball/ball.h"
 #include "../ball/behavior.h"
+#include "../common/shared_ptr.h"
 
 class Trajectory
 {
@@ -11,11 +12,11 @@ public:
 	Ogre::Vector3	mDirection;
 	Ogre::Vector3	mUp;
 	float		mInitializeTime;
-	Behavior_Sptr	mBehavior;
+	Behavior*	mBehavior;
 public:
 	Trajectory(int _mNumTrajectory, Ogre::Vector3 _mPosition, Ogre::Vector3 _mDirection)
 		:mNumTrajectory(_mNumTrajectory), mPosition(_mPosition), mDirection(_mDirection),
-		mInitializeTime(0), mUp(Ogre::Vector3::UNIT_Z)
+		mInitializeTime(0), mUp(Ogre::Vector3::UNIT_Z), mBehavior(0), mNeedUpdate(false)
 	{}
 	virtual ~Trajectory()
 	{}
@@ -23,7 +24,8 @@ public:
 	virtual void AddBall(BallVector& out)=0;
 	virtual BallList	GenerateBallList()=0;
 	virtual BallVector	GenerateBallVector()=0;
-	virtual void SetBehavior(Behavior_Sptr b) 
+	virtual BallVector& GetBallVector()=0;
+	virtual void SetBehavior(Behavior* b) 
 	{
 		mBehavior = b;
 		mNeedUpdate = true;
@@ -39,3 +41,4 @@ protected:
 	}
 	virtual void Modifyed()=0;
 };
+SHARE_PTR(Trajectory)

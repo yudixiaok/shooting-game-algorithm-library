@@ -1,15 +1,38 @@
+#include <cstdlib>
 #include <iostream>
 #include "algo/nway.h"
 #include "DX9/GrphaicDirectX9.h"
 #include "DX9/FlatRenderDx9.h"
 #include "Win32Window.h"
 #include "ball/straight.h"
+#include "comnhdr.h"
+#include "Timer/Timer.hpp"
+#include "algo/BallManager.h"
+
+#define GC_NOT_DLL
+#include <gc_cpp.h>
+
+bool g_exit = false;
+
+static LRESULT CALLBACK Proc(HWND hWnd, UINT message, WPARAM wParam, LPARAM lParam)
+{
+	switch (message)
+	{
+	case WM_DESTROY:
+		g_exit = true;
+		break;
+	default:
+		return DefWindowProc(hWnd, message, wParam, lParam);
+	}
+	return 0;
+}
 
 int main()
 {
+	timer::rdtsc mytimer;
 	// init
 	Win32Window w32;
-	w32.ToCreateWindow(100, 100, 800, 800, L"SGAL");
+	w32.ToCreateWindow(100, 100, 800, 800, L"SGAL", Proc);
 	GrphaicDirectX9 gdx;
 	gdx.InitDevice(w32.GetHandle());
 	FlatRenderDx9 fdx;
@@ -18,12 +41,15 @@ int main()
 	w32.ToShow();
 	w32.ToMoveCenter();
 	// create ball behavior
-	Behavior_Sptr straight = Behavior_Sptr(new Straight);
+	Behavior* straight = new(GC) Straight;
 	// create track
-	Nway nway(11, Ogre::Vector3(400, 400, 0), Ogre::Vector3(0, 1, 0));
-	nway.SetRadiationAngle(90);
+	Nway nway(1000000, Ogre::Vector3(400, 400, 0), Ogre::Vector3(0, 5, 0));
+	nway.SetRadiationAngle(180);
 	nway.SetBehavior(straight);
-	BallVector balls = nway.GenerateBallVector();
+	BallManager bm(4); // 
+	bm.AddTrajectory(&nway);
+	BallVector& balls = nway.GetBallVector();
+	printf("%d", balls[0].GetClassSize());
 	// load pic
 	bool ok = fdx.LoadPicture(L"check0.png", wstrhasher(L"check0.png"));
 	// init picobject to show
@@ -37,20 +63,26 @@ int main()
 		// add object to show
 		fdx.AddPicObject(&pics[i]);
 	}
-	
-	for (;;)
+	MSG msg = w32.HandlePeekMessage();
+	for (;!g_exit;msg = w32.HandlePeekMessage())
 	{
-		w32.HandlePeekMessage();
+		if (VK_ESCAPE == msg.wParam )
+			break;
 		fdx.RenderBegin();
+		BenchTicks_t bt = BenchTicksGetCurrent();
+		bm.Update(0.3f);
 		for (int i=0;i < (int)balls.size();i++)
 		{
 			// update time
-			balls[i].Update(0.3f);
+			
+			//balls[i].Update(0.3f);
 			// update position
-			pics[i].SetRect(Rectf(balls[i].mPosition.x, balls[i].mPosition.y, balls[i].mPosition.x+10, balls[i].mPosition.y+10));
-			fdx.SetPicObject(&pics[i]);
+// 			pics[i].SetRect(Rectf(balls[i].mPosition.x, balls[i].mPosition.y, balls[i].mPosition.x+10, balls[i].mPosition.y+10));
+// 			pics[i].angle = balls[i].mDirection.angleBetween(Ogre::Vector3::UNIT_X).valueDegrees();
+// 			fdx.SetPicObject(&pics[i]);
 		}
-		fdx.RenderFrame();
+		bt = BenchTicksGetCurrent() - bt;
+		printf("time = %s\n", BenchTicksToString(bt, true));
+		//fdx.RenderFrame();
 	}
-	
 }

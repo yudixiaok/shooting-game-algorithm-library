@@ -3,7 +3,6 @@
 #include <algorithm>
 #include <cassert>
 
-#pragma warning(disable:4996)
 #define SAFE_RELEASE(x) if (x) { x->Release(); x=NULL; }
 #define RELEASE_ARRAY(x) if (x) { delete [] x; x=NULL; }
 
@@ -1087,8 +1086,8 @@ void PicObject::SetFillScreen(FlatRenderDx9* render)
 void PicObject::SetRect( const Rectf& _rect )
 {
 	RectToPoint(_rect, points);
-	origin.x = (_rect.left + _rect.right)/2;
-	origin.y = (_rect.top + _rect.bottom)/2;
+	origin.x = (_rect.left + _rect.right)*0.5;
+	origin.y = (_rect.top + _rect.bottom)*0.5;
 }
 
 PicObject::PicObject(std::size_t _id, int _layer, const Posf* ps ) :

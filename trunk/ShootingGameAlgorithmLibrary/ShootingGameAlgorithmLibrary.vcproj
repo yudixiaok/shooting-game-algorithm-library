@@ -158,7 +158,7 @@
 				Name="ball"
 				>
 				<File
-					RelativePath=".\src\ball\ball.cpp"
+					RelativePath=".\src\ball\Ball.cpp"
 					>
 				</File>
 				<File

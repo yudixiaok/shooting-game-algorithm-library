@@ -1,6 +1,7 @@
 #include <cstdlib>
 #include <iostream>
 #include "algo/nway.h"
+#include "algo/RandomWay.h"
 #include "DX9/GrphaicDirectX9.h"
 #include "DX9/FlatRenderDx9.h"
 #include "Win32Window.h"
@@ -43,10 +44,10 @@ int main()
 	// create ball behavior
 	Behavior* straight = new(GC) Straight;
 	// create track
-	Nway nway(1000, Ogre::Vector3(400, 400, 0), Ogre::Vector3(0, 5, 0));
-	nway.SetRadiationAngle(180);
+	RandomWay nway(10, Ogre::Vector3(400, 400, 0), Ogre::Vector3(0, 5, 0));
+	nway.SetRadiationAngle(90);
 	nway.SetBehavior(straight);
-	BallManager bm(4); // 
+	BallManager bm(4); // 多執行緒更新管理器
 	bm.AddTrajectory(&nway);
 	BallVector& balls = nway.GetBallVector();
 	printf("%d", balls[0].GetClassSize());
@@ -69,7 +70,7 @@ int main()
 		if (VK_ESCAPE == msg.wParam )
 			break;
 		fdx.RenderBegin();
-		BenchTicks_t bt = BenchTicksGetCurrent();
+		BenchTicks_t bt = BenchTicksGetCurrent();   
 		// update time
 		bm.Update(0.3f);	
 		for (int i=0;i < (int)balls.size();i++)

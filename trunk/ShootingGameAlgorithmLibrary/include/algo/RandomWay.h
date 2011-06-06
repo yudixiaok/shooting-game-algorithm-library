@@ -1,16 +1,17 @@
 #pragma once
 #include "Trajectory.h"
 #include <iostream>
-#include <algorithm>
+#include <boost/random.hpp>
 
-class NWay : public Trajectory
+class RandomWay : public Trajectory
 {
 public:
+	boost::mt19937  mRandom; 
 	float		mRadiationAngle;
-	NWay(int _mNumTrajectory, Ogre::Vector3 _mPosition, Ogre::Vector3 _mDirection, float _angle = 90.0f)
+	RandomWay(int _mNumTrajectory, Ogre::Vector3 _mPosition, Ogre::Vector3 _mDirection, float _angle = 90.0f)
 		:Trajectory(_mNumTrajectory, _mPosition, _mDirection), mRadiationAngle(_angle)
 	{}
-	virtual ~NWay()
+	virtual ~RandomWay()
 	{}
 	virtual void SetRadiationAngle(float angle)
 	{
@@ -49,14 +50,10 @@ protected:
 		mBall_PreComptue.clear();
 		mBall_PreComptue.reserve(mNumTrajectory);
 		float step_angle;
-		float start = -mRadiationAngle*0.5f;
-		if (mNumTrajectory > 1)
-			step_angle = mRadiationAngle/(mNumTrajectory-1);
-		else
-			start = 0;
-		for (int i = 0;i < mNumTrajectory;i++, start += step_angle)
+		boost::uniform_real<float> rng(-mRadiationAngle*0.5, mRadiationAngle*0.5);
+		for (int i = 0;i < mNumTrajectory;i++)
 		{
-			Ball ball(mPosition, GetRotation(mDirection, start), mBehavior);
+			Ball ball(mPosition, GetRotation(mDirection, rng(mRandom)), mBehavior);
 			ball.Update(mInitializeTime);
 			mBall_PreComptue.push_back(ball);
 		}

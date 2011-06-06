@@ -166,7 +166,7 @@
 					>
 				</File>
 				<File
-					RelativePath=".\src\ball\Straight.cpp"
+					RelativePath=".\src\ball\straight.cpp"
 					>
 				</File>
 			</Filter>
@@ -268,7 +268,11 @@
 					>
 				</File>
 				<File
-					RelativePath=".\include\algo\Nway.h"
+					RelativePath=".\include\algo\NWay.h"
+					>
+				</File>
+				<File
+					RelativePath=".\include\algo\RandomWay.h"
 					>
 				</File>
 				<File

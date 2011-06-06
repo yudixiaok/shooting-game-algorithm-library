@@ -61,7 +61,7 @@
 			/>
 			<Tool
 				Name="VCLinkerTool"
-				AdditionalDependencies="SGALd.lib ogremain_d.lib"
+				AdditionalDependencies="SGALd.lib "
 				OutputFile="$(OutDir)\$(ProjectName).exe"
 				LinkIncremental="2"
 				AdditionalLibraryDirectories="../"
@@ -137,7 +137,7 @@
 			/>
 			<Tool
 				Name="VCLinkerTool"
-				AdditionalDependencies="SGAL.lib ogremain.lib"
+				AdditionalDependencies="SGAL.lib "
 				LinkIncremental="1"
 				AdditionalLibraryDirectories="../"
 				GenerateDebugInformation="true"

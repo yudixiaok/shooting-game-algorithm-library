@@ -166,7 +166,7 @@
 					>
 				</File>
 				<File
-					RelativePath=".\src\ball\straight.cpp"
+					RelativePath=".\src\ball\Straight.cpp"
 					>
 				</File>
 			</Filter>
@@ -232,7 +232,19 @@
 				Name="ball"
 				>
 				<File
-					RelativePath=".\include\ball\ball.h"
+					RelativePath=".\include\ball\Ball.h"
+					>
+				</File>
+				<File
+					RelativePath=".\include\ball\BallPtr.h"
+					>
+				</File>
+				<File
+					RelativePath=".\include\ball\BallTdata.h"
+					>
+				</File>
+				<File
+					RelativePath=".\include\ball\BallTptr.h"
 					>
 				</File>
 				<File
@@ -256,7 +268,7 @@
 					>
 				</File>
 				<File
-					RelativePath=".\include\algo\nway.h"
+					RelativePath=".\include\algo\Nway.h"
 					>
 				</File>
 				<File
@@ -272,11 +284,11 @@
 					>
 				</File>
 				<File
-					RelativePath=".\include\common\shared_ptr.h"
+					RelativePath=".\include\common\Shared_ptr.h"
 					>
 				</File>
 				<File
-					RelativePath=".\include\common\utility.h"
+					RelativePath=".\include\common\Utility.h"
 					>
 				</File>
 			</Filter>

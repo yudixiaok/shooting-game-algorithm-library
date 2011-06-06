@@ -3,8 +3,12 @@
 int Ball::Update( float elapsedtime )
 {
 	if (mpBehavior)
-		return mpBehavior->UpdateBall(this, elapsedtime);
-	return STOP;
+	{
+		mpBehavior->UpdateBall(this, elapsedtime*mTimeRate);
+		return FLY;
+	}
+	else
+		return STOP;
 }
 
 bool Ball::HasBehavior()

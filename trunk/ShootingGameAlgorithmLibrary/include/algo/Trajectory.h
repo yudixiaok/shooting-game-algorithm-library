@@ -20,8 +20,8 @@ public:
 	{}
 	virtual ~Trajectory()
 	{}
-	virtual void AddBall(BallList& out)=0;
-	virtual void AddBall(BallVector& out)=0;
+	virtual void GetBall(BallList& out)=0;
+	virtual void GetBall(BallVector& out)=0;
 	virtual BallList	GenerateBallList()=0;
 	virtual BallVector	GenerateBallVector()=0;
 	virtual BallVector& GetBallVector()=0;

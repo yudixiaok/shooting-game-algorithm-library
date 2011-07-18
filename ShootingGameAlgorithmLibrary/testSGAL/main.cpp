@@ -10,8 +10,6 @@
 #include "Timer/Timer.hpp"
 #include "algo/BallManager.h"
 
-#define GC_NOT_DLL
-#include <gc_cpp.h>
 
 bool g_exit = false;
 
@@ -42,9 +40,9 @@ int main()
 	w32.ToShow();
 	w32.ToMoveCenter();
 	// create ball behavior
-	Behavior* straight = new(GC) Straight;
+	Behavior* straight = new Straight;
 	// create track
-	RandomWay nway(10, Ogre::Vector3(400, 400, 0), Ogre::Vector3(0, 5, 0));
+	RandomWay nway(10000, Ogre::Vector3(400, 400, 0), Ogre::Vector3(0, 5, 0));
 	nway.SetRadiationAngle(90);
 	nway.SetBehavior(straight);
 	BallManager bm(4); // 多執行緒更新管理器
@@ -79,18 +77,18 @@ int main()
 		}
 		bt = BenchTicksGetCurrent() - bt;
 		printf("compute time = %s\n", BenchTicksToString(bt, true));
-		bt = BenchTicksGetCurrent();
-		for (int i=0;i < (int)balls.size();i++)
-		{
-			// update time
-			//balls[i].Update(0.3f);
-			// update position
-			pics[i].SetRect(Rectf(balls[i].mPosition.x, balls[i].mPosition.y, balls[i].mPosition.x+10, balls[i].mPosition.y+10));
-			pics[i].angle = balls[i].mDirection.angleBetween(Ogre::Vector3::UNIT_X).valueDegrees();
-			fdx.SetPicObject(&pics[i]);
-		}
-		fdx.RenderFrame();
-		bt = BenchTicksGetCurrent() - bt;
-		printf("render time = %s\n", BenchTicksToString(bt, true));
+//		bt = BenchTicksGetCurrent();
+// 		for (int i=0;i < (int)balls.size();i++)
+// 		{
+// 			// update time
+// 			//balls[i].Update(0.3f);
+// 			// update position
+// 			pics[i].SetRect(Rectf(balls[i].mPosition.x, balls[i].mPosition.y, balls[i].mPosition.x+10, balls[i].mPosition.y+10));
+// 			pics[i].angle = balls[i].mDirection.angleBetween(Ogre::Vector3::UNIT_X).valueDegrees();
+// 			fdx.SetPicObject(&pics[i]);
+// 		}
+// 		fdx.RenderFrame();
+// 		bt = BenchTicksGetCurrent() - bt;
+// 		printf("render time = %s\n", BenchTicksToString(bt, true));
 	}
 }

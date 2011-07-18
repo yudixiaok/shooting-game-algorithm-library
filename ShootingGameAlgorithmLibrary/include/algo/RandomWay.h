@@ -24,11 +24,11 @@ public:
 		q.FromAngleAxis( Ogre::Degree(angle), mUp );
 		return q * src;
 	}
-	virtual void AddBall(BallList& out)
+	virtual void GetBall(BallList& out)
 	{
 		std::copy(mBall_PreComptue.begin(), mBall_PreComptue.end(), out.end());
 	}
-	virtual void AddBall(BallVector& out)
+	virtual void GetBall(BallVector& out)
 	{
 		std::copy(mBall_PreComptue.begin(), mBall_PreComptue.end(), out.end());
 	}

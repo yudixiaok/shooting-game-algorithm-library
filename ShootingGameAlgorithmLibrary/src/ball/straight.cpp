@@ -1,6 +1,6 @@
 #include "straight.h"
 
-void Straight::SetVector( float v )
+void Straight::SetVelocity( float v )
 {
 	mVelocity = v;
 }

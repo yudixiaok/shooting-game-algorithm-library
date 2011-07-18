@@ -61,7 +61,6 @@
 			/>
 			<Tool
 				Name="VCLibrarianTool"
-				AdditionalDependencies="gc_mtd.lib"
 				OutputFile="SGALd.lib"
 			/>
 			<Tool
@@ -126,7 +125,6 @@
 			/>
 			<Tool
 				Name="VCLibrarianTool"
-				AdditionalDependencies="gc_mt.lib"
 				OutputFile="SGAL.lib"
 			/>
 			<Tool
